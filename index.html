@@ -172,7 +172,7 @@
     <div id="intro" class="tab-content">
       <div class="intro-header">
         <h2>課程介紹</h2>
-        <p>本課程共 12 小時，包含六小時實體課程與六小時線上課程，帶你從 Postly 插件應用到 Make 自動化，逐步打造可落地的內容管理與自動化流程。</p>
+        <p>本課程共 12 小時,包含六小時實體課程與六小時線上課程,帶你從 Postly 插件應用到 Make 自動化,逐步打造可落地的內容管理與自動化流程。</p>
       </div>
 
       <!-- 課程基本資訊 -->
@@ -199,7 +199,7 @@
       <div class="highlights">
         <div class="highlight-item">
           <h3>🔧 工具結合</h3>
-          <p>Postly × Make 無縫整合，快速打造自動化流程。</p>
+          <p>Postly × Make 無縫整合,快速打造自動化流程。</p>
         </div>
         <div class="highlight-item">
           <h3>📈 即學即用</h3>
@@ -207,7 +207,7 @@
         </div>
         <div class="highlight-item">
           <h3>💡 零程式基礎</h3>
-          <p>無需技術背景，任何人都能快速上手。</p>
+          <p>無需技術背景,任何人都能快速上手。</p>
         </div>
       </div>
     </div>
@@ -337,13 +337,20 @@
       const email = document.getElementById('email').value;
       const confirmEmail = document.getElementById('confirmEmail').value;
       if (email !== confirmEmail) {
-        alert('電子郵件不一致，請重新確認');
+        alert('電子郵件不一致,請重新確認');
         return;
       }
 
       const code = document.getElementById('promoCode').value.trim();
       const discountValue = promoCodes[code] || 0;
       const finalAmount = baseAmount - discountValue;
+
+      // 取得選項的顯示文字
+      const paymentMethodSelect = document.getElementById('paymentMethod');
+      const paymentMethodText = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
+      
+      const invoiceTypeSelect = document.getElementById('invoiceType');
+      const invoiceTypeText = invoiceTypeSelect.options[invoiceTypeSelect.selectedIndex].text;
 
       const formData = {
         date: document.getElementById('date').value,
@@ -354,8 +361,8 @@
         amount: baseAmount,
         discount: discountValue,
         finalAmount: finalAmount,
-        paymentMethod: document.getElementById('paymentMethod').value,
-        invoiceType: document.getElementById('invoiceType').value,
+        paymentMethod: paymentMethodText,
+        invoiceType: invoiceTypeText,
         taxId: document.getElementById('taxId').value || '',
         invoiceTitle: document.getElementById('invoiceTitle').value || ''
       };
@@ -369,12 +376,12 @@
         if (response.ok) {
           window.location.href = "https://smart4a.tw/prod/cms/";
         } else {
-          alert("送出失敗，請稍後再試。");
+          alert("送出失敗,請稍後再試。");
         }
       })
       .catch(error => {
         console.error("Webhook error:", error);
-        alert("系統錯誤，請稍後再試。");
+        alert("系統錯誤,請稍後再試。");
       });
     });
   </script>
